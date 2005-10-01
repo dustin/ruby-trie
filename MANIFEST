@@ -1,0 +1,8 @@
+COPYING
+INSTALL
+lib/trie.rb
+MANIFEST
+README
+setup.rb
+test/tests.rb
+trie.gemspec
