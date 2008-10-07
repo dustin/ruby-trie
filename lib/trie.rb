@@ -419,4 +419,16 @@ class Trie
     a
   end
 
+  #
+  # Custom marshalling behavior.  This marshals to a much smaller value than
+  # the default.
+  #
+  def _dump(depth)
+    Marshal.dump(inject([]){|a,p| a << p})
+  end
+
+  def self._load(o)
+    Marshal.load(o).inject(Trie.new) {|t,v| t.insert v[0], v[1]}
+  end
+
 end  # class Trie
