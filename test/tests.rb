@@ -266,4 +266,10 @@ class TestTrie < Test::Unit::TestCase
     end
   end
 
+  def test_to_a
+    t = Trie.new.insert('a', 1).insert('a', 13).insert('at', 2).insert('b', 3)
+    assert_equal([['a', 1], ['a', 13], ['at', 2], ['b', 3]],
+      t.to_a.map{|k,v| [k.join(''), v]})
+  end
+
 end
