@@ -1,4 +1,3 @@
-require 'rubygems'
 SPEC = Gem::Specification.new do |s|
   s.name          = "trie"
   s.version       = "0.0.2"
