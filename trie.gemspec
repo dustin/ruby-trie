@@ -7,10 +7,9 @@ SPEC = Gem::Specification.new do |s|
   s.homepage      = "http://www.erat.org/ruby/"
   s.platform      = Gem::Platform::RUBY
   s.summary       = "Implemention of a trie data structure"
-  candidates      = Dir.glob("{*,{lib,test}/*}")
+  candidates      = %w(COPYING INSTALL MANIFEST README setup.rb trie.gemspec lib/trie.rb test/tests.rb)
   s.files         = candidates.delete_if {|i| i =~ /CVS/ }
   s.require_path  = "lib"
-  s.autorequire   = "trie"
   s.test_file     = "test/tests.rb"
   s.has_rdoc      = true
 end
