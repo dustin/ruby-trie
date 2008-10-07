@@ -256,4 +256,14 @@ class TestTrie < Test::Unit::TestCase
     # '' -> (a -> b -> c -> d -> e -> (f | g) | b)
     assert_equal(9, t.num_nodes)
   end
+
+  def test_marshalling
+    t = Trie.new.insert('a', 1).insert('a', 13).insert('at', 2).insert('b', 3)
+    t2 = Marshal.load(Marshal.dump(t))
+    assert_equal(t.size, t2.size)
+    %w(a at b x).each do |k|
+      assert_equal(t[k], t2[k])
+    end
+  end
+
 end
