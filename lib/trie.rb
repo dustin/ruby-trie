@@ -424,7 +424,7 @@ class Trie
   # the default.
   #
   def _dump(depth)
-    Marshal.dump(inject([]){|a,p| a << p})
+    Marshal.dump(inject([]){|a,p| a << [p.first.join(''), p.last]})
   end
 
   def self._load(o)
