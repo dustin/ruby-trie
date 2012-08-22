@@ -13,6 +13,7 @@ class LookAheadTrie < Trie
   end
 
   def longest_path
+    return @compressed_key.join("") if @compressed_key.size > 0
     return "" unless linear?
     child = @children.first
     return child[0] + child[1].longest_path

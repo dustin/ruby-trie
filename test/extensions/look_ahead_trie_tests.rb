@@ -25,8 +25,8 @@ class TestLookAheadTrie < Test::Unit::TestCase
   # Check to see what the possible extensions are
   def test_list_root_paths
     t = LookAheadTrie.new
-    %w(radio ratio ration radon patio path q).each_with_index { |word, index| t.insert(word, index) }
-    assert_equal(%w(pat q ra), t.paths.sort)
+    %w(radio ratio ration radon patio path q sunshine).each_with_index { |word, index| t.insert(word, index) }
+    assert_equal(%w(pat q ra sunshine), t.paths.sort)
   end
 
   def test_list_walked_paths
