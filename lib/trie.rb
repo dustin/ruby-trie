@@ -293,14 +293,14 @@ class Trie
   def find(key)
     key = key.split('') if key.is_a?(String)
     if (key.empty? and @compressed_key.empty?) or key == @compressed_key
-      trie = Trie.new
+      trie = self.class.new
       @values.each {|v| trie.insert([], v) }
       @compressed_values.each {|v| trie.insert([], v) }
       trie
     elsif @children[key[0]]
       @children[key[0]].find(key[1..-1])
     else
-      Trie.new
+      self.class.new
     end
   end
 
@@ -319,7 +319,7 @@ class Trie
     if prefix.empty?
       self
     elsif prefix == @compressed_key[0...prefix.size]
-      trie = Trie.new
+      trie = self.class.new
       @compressed_values.each do |value|
         trie.insert(@compressed_key[prefix.size..-1], value)
       end
@@ -327,7 +327,7 @@ class Trie
     elsif @children[prefix[0]]
       @children[prefix[0]].find_prefix(prefix[1..-1])
     else
-      Trie.new
+      self.class.new
     end
   end
 
@@ -364,7 +364,7 @@ class Trie
   # Internal method called by Trie.insert.
   #
   def insert_in_child(key, value)
-    (@children[key[0]] ||= Trie.new).insert(key[1..-1], value)
+    (@children[key[0]] ||= self.class.new).insert(key[1..-1], value)
   end
   private :insert_in_child
 
@@ -432,3 +432,6 @@ class Trie
   end
 
 end  # class Trie
+
+# Load extensions
+require 'extensions/look_ahead_trie'
