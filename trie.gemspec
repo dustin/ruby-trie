@@ -1,6 +1,6 @@
 SPEC = Gem::Specification.new do |s|
   s.name          = "trie"
-  s.version       = "0.0.2"
+  s.version       = "0.0.3"
   s.author        = "Daniel Erat"
   s.email         = "dan-ruby@erat.org"
   s.homepage      = "http://www.erat.org/ruby/"
